@@ -1,18 +1,19 @@
 #pragma once
+#include "SpriteSheet.h"
 class Sprite
 {
 private:
-	HBITMAP img;
-
-	void drawImage(HDC hdc, int srcX, int srcY);
+	SpriteSheet sprites;
+	HGDIOBJ old;
 public:
 	int x, y, w, h;
-	int frame = 0;
+	int frame = 0, loopLen = 1;
 
 	Sprite();
-	Sprite(HBITMAP &image, int left, int top, int width, int height);
+	Sprite(SpriteSheet &spriteSheet, int left, int top);
 	~Sprite();
 
-	void paint(HDC hdc);
+	void paint(HDC hdc, HDC mem);
+	void nextFrame();
 };
 

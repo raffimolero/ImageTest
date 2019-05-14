@@ -1,31 +1,24 @@
 #include "stdafx.h"
 #include "Sprite.h"
 
-
 Sprite::Sprite()
 {
 }
-Sprite::Sprite(HBITMAP &image, int left, int top, int width, int height) {
+Sprite::Sprite(SpriteSheet &spriteSheet, int left, int top) {
+	sprites = spriteSheet;
 	x = left;
 	y = top;
-	w = width;
-	h = height;
-	img = image;
+	w = sprites.w;
+	h = sprites.h;
 }
 Sprite::~Sprite()
 {
 }
 
-void Sprite::drawImage(HDC hdc, int srcX, int srcY) {
-	HDC hdcMem = CreateCompatibleDC(hdc);
-	HGDIOBJ oldBmp = SelectObject(hdcMem, img);
-	BITMAP bmp;
-	GetObject(img, sizeof(bmp), &bmp);
-	BitBlt(hdc, x, y, w, h, hdcMem, srcX, srcY, SRCCOPY);
-	SelectObject(hdcMem, oldBmp);
-	DeleteDC(hdcMem);
+void Sprite::paint(HDC hdc, HDC mem) {
+	sprites.paint(hdc, mem, x, y);
 }
 
-void Sprite::paint(HDC hdc) {
-	drawImage(hdc, 0, 0);
+void Sprite::nextFrame() {
+	sprites.nextFrame();
 }

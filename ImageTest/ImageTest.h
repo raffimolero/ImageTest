@@ -7,13 +7,14 @@ HBITMAP image;
 Sprite numbers;
 
 void paint(HDC hdc) {
-	numbers.paint(hdc);
+	HDC hdcMem = CreateCompatibleDC(hdc);
+	HPEN pen = CreatePen(PS_SOLID, 10, RGB(255, 0, 0));
+	SelectObject(hdc, pen);
 
-	/*HDC hdcMem = CreateCompatibleDC(hdc);
-	HGDIOBJ oldBmp = SelectObject(hdcMem, image);
-	BITMAP bmp;
-	GetObject(image, sizeof(bmp), &bmp);
-	BitBlt(hdc, 0, 0, bmp.bmWidth, bmp.bmHeight, hdcMem, 0, 0, SRCCOPY);
-	SelectObject(hdcMem, oldBmp);
-	DeleteDC(hdcMem);*/
+	numbers.nextFrame();
+	numbers.paint(hdc, hdcMem);
+
+	MoveToEx(hdc, 100, 100, NULL);
+	LineTo(hdc, 50, 100);
+	DeleteDC(hdcMem);
 }
