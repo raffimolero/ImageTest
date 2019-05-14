@@ -12,11 +12,7 @@
 #define IDI_SMALL                       108
 #define IDC_IMAGETEST                   109
 #define IDR_MAINFRAME                   128
-#define IDB_BITMAP1                     129
-#define IDB_BITMAP2                     130
-#define IDB_PNG1                        132
-#define IDB_BITMAP4                     133
-#define IDB_EXPLOSION                   133
+#define IDB_EXPLOSION                   129
 #define IDC_STATIC                      -1
 
 // Next default values for new objects

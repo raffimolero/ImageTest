@@ -18,7 +18,6 @@ Sprite::~Sprite()
 void Sprite::paint(HDC hdc, HDC mem) {
 	sprites.paint(hdc, mem, x, y);
 }
-
 bool Sprite::nextFrame() {
 	return sprites.nextFrame();
 }

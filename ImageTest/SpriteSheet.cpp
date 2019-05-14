@@ -2,21 +2,21 @@
 #include "SpriteSheet.h"
 
 
-SpriteSheet::SpriteSheet()
-{
+SpriteSheet::SpriteSheet() {
 }
-SpriteSheet::SpriteSheet(HBITMAP &content, int* loopLengths, int width, int height)
-{
+SpriteSheet::SpriteSheet(HBITMAP &content, int* loopLengths, int animationID, int width, int height) {
 	sheet = content;
-	BITMAP bmp;
-	GetObject(content, sizeof(BITMAP), &bmp);
+	loopID = animationID;
 	w = width;
 	h = height;
+
+	BITMAP bmp;
+	GetObject(content, sizeof(BITMAP), &bmp);
+
 	loopLens = loopLengths;
 	loopCount = bmp.bmHeight / h;
 }
-SpriteSheet::~SpriteSheet()
-{
+SpriteSheet::~SpriteSheet() {
 }
 
 void SpriteSheet::paint(HDC hdc, HDC mem, int x, int y) {

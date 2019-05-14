@@ -170,8 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\..\Pictures\Resources\explosion.bmp" />
-    <Image Include="bitmap1.bmp" />
-    <Image Include="bitmap2.bmp" />
     <Image Include="ImageTest.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

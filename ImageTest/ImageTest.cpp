@@ -146,13 +146,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	break;
 	case WM_CREATE: {
-		SetTimer(hWnd, NULL, 100, NULL);
-		image = (HBITMAP)LoadImage(hInst, MAKEINTRESOURCE(IDB_EXPLOSION), IMAGE_BITMAP, 0, 0, NULL);
+		SetTimer(hWnd, NULL, 1000 / 24, NULL);
+
+		HBITMAP barrelBmp = (HBITMAP)LoadImage(hInst, MAKEINTRESOURCE(IDB_EXPLOSION), IMAGE_BITMAP, 0, 0, NULL);
+		HBITMAP boomBmp = (HBITMAP)LoadImage(hInst, MAKEINTRESOURCE(IDB_EXPLOSION), IMAGE_BITMAP, 0, 0, NULL);
+
 		int* loopLengths = new int[2];
 		loopLengths[0] = 4;
 		loopLengths[1] = 8;
-		SpriteSheet sheet = SpriteSheet(image, loopLengths, 60, 60);
+
+		SpriteSheet sheet = SpriteSheet(barrelBmp, loopLengths, 0, 60, 60);
 		barrel = Sprite(sheet, 10, 10);
+		sheet = SpriteSheet(barrelBmp, loopLengths, 1, 60, 60);
+		boom = Sprite(sheet, 100, 10);
 	}
 	break;
 	case WM_PAINT: {

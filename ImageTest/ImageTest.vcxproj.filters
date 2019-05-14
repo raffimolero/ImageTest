@@ -60,12 +60,6 @@
     <Image Include="ImageTest.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="bitmap1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="bitmap2.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="..\..\..\..\..\..\Pictures\Resources\explosion.bmp">
       <Filter>Resource Files</Filter>
     </Image>

@@ -5,34 +5,23 @@
 #include "Sprite.h"
 
 const double tau = 6.283185307179586;
-HBITMAP image;
+int globalTimer = 0;
 Sprite barrel;
+Sprite boom;
 
 void paint(HDC hdc) {
 	HDC hdcMem = CreateCompatibleDC(hdc);
-	SpriteSheet *sprites = &barrel.sprites;
-	int id = sprites->loopID;
-	int loopLen = sprites->loopLens[id];
-	int frame = sprites->frame;
 
-	if (barrel.nextFrame()) {
-		sprites->loopID++;
-		sprites->loopID %= sprites->loopCount;
-	}
+	barrel.nextFrame();
 	barrel.paint(hdc, hdcMem);
 
-	int x = 100, y = 100;
-	MoveToEx(hdc, x, y, NULL);
-	HPEN pen = CreatePen(PS_SOLID, 10, RGB(255, 0, 0));
-	SelectObject(hdc, pen);
+	int loop = 180;
+	int amp = 90;
+	boom.x = 100 + (sin(tau / loop * (globalTimer % loop)) * amp);
 
-	
-	double angle = tau / loopLen * frame;
-	int len = 50;
+	boom.nextFrame();
+	boom.paint(hdc, hdcMem);
 
-	int xTo = sin(angle) * len;
-	int yTo = cos(angle) * len;
-
-	LineTo(hdc, x + xTo, y + yTo);
 	DeleteDC(hdcMem);
+	globalTimer++;
 }

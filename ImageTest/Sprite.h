@@ -2,7 +2,6 @@
 #include "SpriteSheet.h"
 class Sprite
 {
-private:
 public:
 	SpriteSheet sprites;
 	int x, y, w, h;
