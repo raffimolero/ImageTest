@@ -147,9 +147,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	break;
 	case WM_CREATE: {
 		SetTimer(hWnd, NULL, 100, NULL);
-		image = (HBITMAP)LoadImage(hInst, MAKEINTRESOURCE(IDB_BITMAP2), IMAGE_BITMAP, 0, 0, NULL);
-		SpriteSheet sheet = SpriteSheet(image, 4, 7, 7);
-		numbers = Sprite(sheet, 10, 10);
+		image = (HBITMAP)LoadImage(hInst, MAKEINTRESOURCE(IDB_EXPLOSION), IMAGE_BITMAP, 0, 0, NULL);
+		int* loopLengths = new int[2];
+		loopLengths[0] = 4;
+		loopLengths[1] = 8;
+		SpriteSheet sheet = SpriteSheet(image, loopLengths, 60, 60);
+		barrel = Sprite(sheet, 10, 10);
 	}
 	break;
 	case WM_PAINT: {

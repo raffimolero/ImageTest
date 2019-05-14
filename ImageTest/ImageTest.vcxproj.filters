@@ -66,5 +66,8 @@
     <Image Include="bitmap2.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\..\..\Pictures\Resources\explosion.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

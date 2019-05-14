@@ -3,17 +3,15 @@
 class Sprite
 {
 private:
-	SpriteSheet sprites;
-	HGDIOBJ old;
 public:
+	SpriteSheet sprites;
 	int x, y, w, h;
-	int frame = 0, loopLen = 1;
 
 	Sprite();
 	Sprite(SpriteSheet &spriteSheet, int left, int top);
 	~Sprite();
 
 	void paint(HDC hdc, HDC mem);
-	void nextFrame();
+	bool nextFrame();
 };
 

@@ -5,12 +5,15 @@
 SpriteSheet::SpriteSheet()
 {
 }
-SpriteSheet::SpriteSheet(HBITMAP &content, int loopLength, int width, int height)
+SpriteSheet::SpriteSheet(HBITMAP &content, int* loopLengths, int width, int height)
 {
 	sheet = content;
-	loopLen = loopLength;
+	BITMAP bmp;
+	GetObject(content, sizeof(BITMAP), &bmp);
 	w = width;
 	h = height;
+	loopLens = loopLengths;
+	loopCount = bmp.bmHeight / h;
 }
 SpriteSheet::~SpriteSheet()
 {
@@ -18,10 +21,12 @@ SpriteSheet::~SpriteSheet()
 
 void SpriteSheet::paint(HDC hdc, HDC mem, int x, int y) {
 	SelectObject(mem, sheet);
-	BitBlt(hdc, x, y, w, h, mem, frame * w, 0, SRCCOPY);
+	BitBlt(hdc, x, y, w, h, mem, frame * w, loopID * h, SRCCOPY);
 }
 
-void SpriteSheet::nextFrame() {
+bool SpriteSheet::nextFrame() {
+	int loopLen = loopLens[loopID];
 	frame++;
 	frame %= loopLen;
+	return !frame;
 }
