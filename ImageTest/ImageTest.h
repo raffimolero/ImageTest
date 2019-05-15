@@ -9,6 +9,10 @@ int globalTimer = 0;
 Sprite barrel;
 Sprite boom;
 
+HBITMAP LoadBmp(HINSTANCE hInst, int ID) {
+	return (HBITMAP)LoadImage(hInst, MAKEINTRESOURCE(ID), IMAGE_BITMAP, 0, 0, NULL);
+}
+
 void paint(HDC hdc) {
 	HDC hdcMem = CreateCompatibleDC(hdc);
 

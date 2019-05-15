@@ -9,10 +9,20 @@ public:
 	int* loopLens;
 
 	SpriteSheet();
-	SpriteSheet(HBITMAP &content, int* loopLengths, int animationID, int width, int height);
+	SpriteSheet(
+		HBITMAP &content,
+		int* loopLengths,
+		int animationID,
+		int width, int height
+	);
 	~SpriteSheet();
 
-	void paint(HDC hdc, HDC mem, int x, int y);
+	void paint(
+		HDC hdc, HDC mem,
+		int x, int y,
+		double stretchX,
+		double stretchY
+	);
 	bool nextFrame();
 };
 
