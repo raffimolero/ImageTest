@@ -1,4 +1,6 @@
 #pragma once
+#include <stdarg.h>
+
 class SpriteSheet
 {
 private:
@@ -11,9 +13,9 @@ public:
 	SpriteSheet();
 	SpriteSheet(
 		HBITMAP &content,
-		int* loopLengths,
 		int animationID,
-		int width, int height
+		int width, int height,
+		...
 	);
 	~SpriteSheet();
 

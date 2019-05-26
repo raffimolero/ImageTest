@@ -142,19 +142,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	break;
 	case WM_TIMER: {
-		InvalidateRect(hWnd, NULL, true);
+		InvalidateRect(hWnd, NULL, false);
 	}
 	break;
 	case WM_CREATE: {
-		SetTimer(hWnd, NULL, 1000 / 24, NULL);
+		SetTimer(hWnd, NULL, 1000 / 30, NULL);
 
 		HBITMAP explosionBmp = LoadBmp(hInst, IDB_EXPLOSION);
+		SpriteSheet sheet = SpriteSheet(explosionBmp, 0, 20, 20, 4, 8);
 
-		int* loopLengths = new int[2];
-		loopLengths[0] = 4;
-		loopLengths[1] = 8;
-
-		SpriteSheet sheet = SpriteSheet(explosionBmp, loopLengths, 0, 20, 20);
 		barrel = Sprite(sheet, 10, 10, 4);
 		sheet.loopID = 1;
 		boom = Sprite(sheet, 100, 10, 8);
@@ -164,7 +160,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
 		// TODO: Add any drawing code that uses hdc here...
-		paint(hdc);
+		RECT rect;
+		GetWindowRect(hWnd, &rect);
+		paint(hdc, rect);
 		EndPaint(hWnd, &ps);
 	}
 	break;
