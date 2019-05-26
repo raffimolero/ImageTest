@@ -90,12 +90,29 @@ void setPixelData(HDC hdc, HBITMAP &hbm, BITMAPINFO bmInf, char* data) {
 	SetDIBits(hdc, hbm, 0, bmInf.bmiHeader.biHeight, data, &bmInf, DIB_PAL_COLORS);
 }
 
-void paint(HDC &hdc, RECT window) {
-	//int w = window.right - window.left;
-	//int h = window.bottom - window.top;
+HBITMAP crop(HDC hdc, HBITMAP hbm, int lft, int top, int rgt, int btm) {
+	BITMAP bm = getData(hbm);
+	char* source = getPixelData(hdc, hbm);
+	int w = rgt - lft;
+	int h = btm - top;
+	char* cropped = new char[w * h * 3];
+	char r, g, b;
+	for (int y = top; y < btm; y++) {
+		for (int x = lft; x < rgt; x++) {
+			getPixel(source, bm.bmWidth, x, y, r, g, b);
+			setPixel(cropped, w, x, y, r, g, b);
+		}
+	}
+	BITMAPINFO bmInf = createBmInf(w, h);
+	HBITMAP ret = CreateCompatibleBitmap(hdc, w, h);
+	setPixelData(hdc, ret, bmInf, cropped);
+	delete[] cropped;
+	delete[] source;
+	return ret;
+}
 
+void paint(HDC &hdc, RECT window) {
 	HDC hdcMem = CreateCompatibleDC(hdc);
-	//HDC hdcBuf = CreateCompatibleDC(hdcMem);
 	
 	if (false) {
 		barrel.nextFrame();
@@ -116,31 +133,17 @@ void paint(HDC &hdc, RECT window) {
 
 	int w = 160;
 	int h = 40;
-	int w2 = w * 2;
-	int h2 = h * 2;
-	char* d = new char[w2 * h2 * 3];
-	char r, g, b;
-	for (int y = 0; y < h; y++) {
-		for (int x = 0; x < w; x++) {
-			getPixel(pixels, w, x, y, r, g, b);
-			setPixel(d, w2, x * 2, y * 2, r, g, b);
-			setPixel(d, w2, x * 2 + 1, y * 2, r, g, b);
-			setPixel(d, w2, x * 2, y * 2 + 1, r, g, b);
-			setPixel(d, w2, x * 2 + 1, y * 2 + 1, r, g, b);
-		}
-	}
-	BITMAPINFO bmInf = createBmInf(w2, h2);
-	HBITMAP temp = CreateCompatibleBitmap(hdc, w2, h2);
-	setPixelData(hdc, temp, bmInf, d);
+
+	HBITMAP temp = crop(hdc, hbm, 0, 0, 20, 20);
 	SelectObject(hdcMem, temp);
-	BitBlt(hdc, 0, 0, w2, h2, hdcMem, 0, 0, SRCCOPY);
-	bmInf.bmiHeader.biHeight = h;
-	bmInf.bmiHeader.biWidth = w;
+	BitBlt(hdc, 0, 0, 20, 20, hdcMem, 0, 0, SRCCOPY);
 
 	DeleteObject(temp);
-	delete[] d;
 	delete[] pixels;
 	DeleteDC(hdcMem);
 
 	globalTimer++;
+}
+void tick(HWND hWnd) {
+	InvalidateRect(hWnd, NULL, false);
 }

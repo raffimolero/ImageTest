@@ -142,7 +142,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	break;
 	case WM_TIMER: {
-		InvalidateRect(hWnd, NULL, false);
+		tick(hWnd);
 	}
 	break;
 	case WM_CREATE: {
