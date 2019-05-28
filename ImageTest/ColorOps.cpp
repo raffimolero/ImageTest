@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Color.h"
+#include "ColorOps.h"
 
 int hueWave(unsigned char val) {
 	if (val > 128) val = -val;

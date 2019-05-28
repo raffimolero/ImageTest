@@ -26,6 +26,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
 	// TODO: Place code here.
+	start();
 
 	// Initialize global strings
 	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -54,8 +55,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	return (int)msg.wParam;
 }
-
-
 
 //
 //  FUNCTION: MyRegisterClass()
@@ -141,28 +140,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 	}
 	break;
-	case WM_TIMER: {
-		tick(hWnd);
-	}
-	break;
 	case WM_CREATE: {
-		SetTimer(hWnd, NULL, 1000 / 30, NULL);
-
-		HBITMAP explosionBmp = LoadBmp(hInst, IDB_EXPLOSION);
-		SpriteSheet sheet = SpriteSheet(explosionBmp, 0, 20, 20, 4, 8);
-
-		barrel = Sprite(sheet, 10, 10, 4);
-		sheet.loopID = 1;
-		boom = Sprite(sheet, 100, 10, 8);
+		init(hWnd, hInst);
 	}
 	break;
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
 		// TODO: Add any drawing code that uses hdc here...
-		RECT rect;
-		GetWindowRect(hWnd, &rect);
-		paint(hdc, rect);
+		paint(hdc);
 		EndPaint(hWnd, &ps);
 	}
 	break;

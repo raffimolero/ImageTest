@@ -26,6 +26,8 @@ void Sprite::paint(HDC hdc, HDC mem) {
 		stretchX, stretchY
 	);
 }
-bool Sprite::nextFrame() {
-	return sprites.nextFrame();
+bool Sprite::nextFrame(HDC hdc) {
+	bool ret = sprites.nextFrame();
+	sprites.frame = crop(hdc, sprites.sheet, sprites.frameNum * w, (sprites.loopCount - sprites.loopID - 1) * h, w, h);
+	return ret;
 }

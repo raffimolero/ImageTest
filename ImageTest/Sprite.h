@@ -1,10 +1,11 @@
 #pragma once
 #include "SpriteSheet.h"
+
 class Sprite
 {
 public:
 	SpriteSheet sprites;
-	int x, y, w, h;
+	double x, y, w, h;
 	double stretchX = 1, stretchY = 1;
 
 	Sprite();
@@ -16,6 +17,6 @@ public:
 	~Sprite();
 
 	void paint(HDC hdc, HDC mem);
-	bool nextFrame();
+	bool nextFrame(HDC mem);
 };
 

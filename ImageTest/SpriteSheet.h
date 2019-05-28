@@ -1,13 +1,14 @@
 #pragma once
 #include <stdarg.h>
+#include "ImageOps.h"
 
 class SpriteSheet
 {
 private:
 public:
-	HBITMAP sheet;
+	HBITMAP sheet, frame;
 	int w, h;
-	int frame = 0, loopID = 0, loopCount;
+	int frameNum = 0, loopID = 0, loopCount;
 	int* loopLens;
 
 	SpriteSheet();
