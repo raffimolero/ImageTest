@@ -20,9 +20,8 @@ SpriteSheet::SpriteSheet(
 	w = width;
 	h = height;
 
-	BITMAP bmp;
-	GetObject(content, sizeof(BITMAP), &bmp);
-	loopCount = bmp.bmHeight / h;
+	BITMAP bm = getData(content);
+	loopCount = bm.bmHeight / h;
 
 	va_list vl;
 	va_start(vl, height);
@@ -36,21 +35,23 @@ SpriteSheet::~SpriteSheet() {
 void SpriteSheet::paint(
 	HDC hdc, HDC mem,
 	int x, int y,
-	double stretchX, double stretchY) {
-	SelectObject(mem, sheet);
-	StretchBlt(
+	double stretchX,
+	double stretchY) {
+	SelectObject(mem, frame);
+	COLORREF alpha = RGB(128, 128, 128);
+	TransparentBlt(
 		hdc,
 		x, y,
-		w * stretchX, h * stretchY,
+		w * stretchX, w * stretchY,
 		mem,
-		frame * w, loopID * h,
-		w, h,
-		SRCCOPY);
+		0, 0, w, h,
+		alpha
+	);
 }
 
 bool SpriteSheet::nextFrame() {
 	int loopLen = loopLens[loopID];
-	frame++;
-	frame %= loopLen;
-	return !frame;
+	frameNum++;
+	frameNum %= loopLen;
+	return !frameNum;
 }
