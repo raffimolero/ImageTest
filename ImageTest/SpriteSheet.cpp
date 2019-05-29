@@ -37,6 +37,16 @@ void SpriteSheet::paint(
 	int x, int y,
 	double stretchX,
 	double stretchY) {
+	if (!updated) {
+		frame = cropBmp(
+			hdc, mem,
+			sheet,
+			frameNum * w,
+			loopID * h,
+			w, h
+		);
+		updated = true;
+	}
 	SelectObject(mem, frame);
 	COLORREF alpha = RGB(128, 128, 128);
 	TransparentBlt(
@@ -53,5 +63,6 @@ bool SpriteSheet::nextFrame() {
 	int loopLen = loopLens[loopID];
 	frameNum++;
 	frameNum %= loopLen;
+	updated = false;
 	return !frameNum;
 }

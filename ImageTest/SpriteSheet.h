@@ -7,6 +7,7 @@ class SpriteSheet
 private:
 public:
 	HBITMAP sheet, frame;
+	bool updated = false;
 	int w, h;
 	int frameNum = 0, loopID = 0, loopCount;
 	int* loopLens;
