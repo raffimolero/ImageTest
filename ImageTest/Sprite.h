@@ -17,6 +17,6 @@ public:
 	~Sprite();
 
 	void paint(HDC hdc, HDC mem);
-	bool nextFrame(HDC mem);
+	bool nextFrame(HDC hdc, HDC mem);
 };
 
