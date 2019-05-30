@@ -4,20 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageTest", "ImageTest\ImageTest.vcxproj", "{1AFE00D1-EFC6-4CC2-A5CB-6BFF8FA39919}"
-	ProjectSection(ProjectDependencies) = postProject
-		{55DFFF12-16F8-4889-81C1-026A55A3A276} = {55DFFF12-16F8-4889-81C1-026A55A3A276}
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B} = {3BC57648-02D4-4F85-B7F3-934456A7F53B}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EuclideanOps", "..\..\DLL\EuclideanOps\EuclideanOps\EuclideanOps.vcxproj", "{3BC57648-02D4-4F85-B7F3-934456A7F53B}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageOps", "..\..\DLL\ImageOps\ImageOps\ImageOps.vcxproj", "{55DFFF12-16F8-4889-81C1-026A55A3A276}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B} = {3BC57648-02D4-4F85-B7F3-934456A7F53B}
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97} = {91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ColorOps", "..\..\DLL\ColorOps\ColorOps\ColorOps.vcxproj", "{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,30 +21,6 @@ Global
 		{1AFE00D1-EFC6-4CC2-A5CB-6BFF8FA39919}.Release|x64.Build.0 = Release|x64
 		{1AFE00D1-EFC6-4CC2-A5CB-6BFF8FA39919}.Release|x86.ActiveCfg = Release|Win32
 		{1AFE00D1-EFC6-4CC2-A5CB-6BFF8FA39919}.Release|x86.Build.0 = Release|Win32
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Debug|x64.ActiveCfg = Debug|x64
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Debug|x64.Build.0 = Debug|x64
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Debug|x86.ActiveCfg = Debug|Win32
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Debug|x86.Build.0 = Debug|Win32
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Release|x64.ActiveCfg = Release|x64
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Release|x64.Build.0 = Release|x64
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Release|x86.ActiveCfg = Release|Win32
-		{3BC57648-02D4-4F85-B7F3-934456A7F53B}.Release|x86.Build.0 = Release|Win32
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Debug|x64.ActiveCfg = Debug|x64
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Debug|x64.Build.0 = Debug|x64
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Debug|x86.ActiveCfg = Debug|Win32
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Debug|x86.Build.0 = Debug|Win32
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Release|x64.ActiveCfg = Release|x64
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Release|x64.Build.0 = Release|x64
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Release|x86.ActiveCfg = Release|Win32
-		{55DFFF12-16F8-4889-81C1-026A55A3A276}.Release|x86.Build.0 = Release|Win32
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Debug|x64.ActiveCfg = Debug|x64
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Debug|x64.Build.0 = Debug|x64
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Debug|x86.ActiveCfg = Debug|Win32
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Debug|x86.Build.0 = Debug|Win32
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Release|x64.ActiveCfg = Release|x64
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Release|x64.Build.0 = Release|x64
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Release|x86.ActiveCfg = Release|Win32
-		{91FE9B87-25C7-42E9-8E0B-CAD7D2010F97}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
