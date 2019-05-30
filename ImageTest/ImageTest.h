@@ -3,6 +3,7 @@
 #include "Sprite.h"
 
 int x, y, w, h;
+int id = 0;
 DWORD globalTime = 0;
 HBITMAP sheet;
 Sprite barrel;
@@ -19,33 +20,37 @@ inline void updateWindowDimensions(HWND hWnd) {
 	w = window.right - x;
 	h = window.bottom - y;
 }
+inline void createTimer(HWND hWnd, int msPerTick, TIMERPROC timerFunc) {
+	SetTimer(hWnd, id++, msPerTick, timerFunc);
+}
 
 void start() {
 	
 }
 void paint(HDC &hdc) {
-	HDC hdcMem = CreateCompatibleDC(hdc);
-	
-	int loop = 90;
-	int amp = 90;
-	double angle = tau / loop;
+	HDC mem = CreateCompatibleDC(hdc);
+
+	double angle = tau / 256;
 	rotate(boom.x, boom.y, w * 2 / 5, h * 2 / 5, -angle);
 	rotate(barrel.x, barrel.y, boom.x, boom.y, angle);
 
-	barrel.nextFrame(hdc, hdcMem);
-	boom.nextFrame(hdc, hdcMem);
+	barrel.paint(hdc, mem);
+	boom.paint(hdc, mem);
 
-	boom.paint(hdc, hdcMem);
-	barrel.paint(hdc, hdcMem);
-
-	DeleteDC(hdcMem);
+	DeleteDC(mem);
+}
+void CALLBACK paintTick(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
+	InvalidateRect(hwnd, NULL, true);
 }
 void CALLBACK tick(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
-	InvalidateRect(hwnd, NULL, true);
+	barrel.nextFrame();
+	boom.nextFrame();
+
 	globalTime++;
 }
 void init(HWND hWnd, HINSTANCE hInst) {
-	SetTimer(hWnd, NULL, 1000 / 24, tick);
+	createTimer(hWnd, 10, paintTick);
+	createTimer(hWnd, 1000 / 24, tick);
 	updateWindowDimensions(hWnd);
 
 	sheet = LoadBmp(hInst, IDB_EXPLOSION);
