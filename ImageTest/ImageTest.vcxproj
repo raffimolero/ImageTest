@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\Sprite\Sprite;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ColorOps\ColorOps;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\EuclideanOps\EuclideanOps;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ImageOps\ImageOps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\Sprite\Sprite;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\EuclideanOps\EuclideanOps;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ImageOps\ImageOps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -101,7 +101,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "C:\Users\Raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\Sprite\Debug\Sprite.dll" "$(OutDir)"
-</Command>
+xcopy /y /d "C:\Users\Raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ImageOps\Debug\ImageOps.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -128,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\Sprite\Sprite;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ColorOps\ColorOps;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\EuclideanOps\EuclideanOps;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ImageOps\ImageOps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\Sprite\Sprite;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\EuclideanOps\EuclideanOps;C:\Users\raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ImageOps\ImageOps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -140,7 +140,7 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "C:\Users\Raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\Sprite\Debug\Sprite.dll" "$(OutDir)"
-</Command>
+xcopy /y /d "C:\Users\Raffi\Documents\Visual Studio 2017\Projects\CPP\DLL\ImageOps\Debug\ImageOps.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
